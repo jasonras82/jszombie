@@ -2,14 +2,20 @@ alert("Hello Colonel Mustard, welcome to the Clue Zombie Apocalypse.  You are ro
 
 var weapon = '',
 weaponArr = ['wrench', 'candlestick', 'lead pipe', 'rope', 'revolver', 'knife'],
-weaponPosition = '';
+weaponPosition = '',
+rope = function(i) {
+  newZombie = ['The zombie ', 'A zombie comes out from around the corner, ']
+  alert('Seriously?  A rope?' + newZombie[i] + 'sees your rope, laughs and then eats your brains as you helplessly try to kill him with a worthless rope.');
+  goodNight();
+};
+
 
 function chooseWeapon(str) {
   weapon = prompt(str);
-  if (weapon === '' || weapon === null || weapon === undefined){
+  if (weapon === ' ' || weapon === null || weapon === undefined){
     throw new Error ('You\'re no fun. ' + goodNight());
 }
-  
+
   weapon.toLowerCase();
   weaponPosition = weaponArr.indexOf(weapon);
   return weaponArr[weaponPosition];
@@ -28,10 +34,9 @@ switch(weaponArr[weaponPosition]) {
     var wrenchAttack = prompt('Where do you hit the zombie? In the head or the gut?');
     if(wrenchAttack === 'head') {
       alert('You killed the zombie but lost the wrench in his squishy head, another zombie enters the room and you reach for another weapon.');
-      chooseWeapon('Do you choose the Rope or the Lead Pipe?')
+      chooseWeapon('Do you choose the Rope or the Lead Pipe?');
       if(weaponArr[weaponPosition] === 'rope') {
-        alert('Really?  A rope? A zombie comes out from around the corner, sees your rope, laughs and eats your brains.');
-        goodNight();
+        rope(1);
       }
       else {
         alert('Nice, that sucker works great as you fight off a few more zombies on the way to your underground bunker via the secret door in the Billard Room.');
@@ -41,13 +46,13 @@ switch(weaponArr[weaponPosition]) {
     }
     else {
       alert('Nice shot! He doubles over and you kick him in the head.  His head falls off and you run out of the room.');
-      alert('Unfortunately, after the hit to the Zombie\'s stomach, your wrench is bent and useless. After running frantically towards the door of the mansion you meet another zombie, but having left the room with all of the weapons, the next zombie comes and eats your brains.')
+      alert('Unfortunately, after the hit to the Zombie\'s stomach, your wrench is bent and useless. After running frantically towards the door of the mansion you meet another zombie, but having left the room with all of the weapons, the next zombie comes and eats your brains.');
       goodNight();
     }
     break;
   case 'rope':
-    alert('Really?  A rope? A zombie comes out from around the corner, sees your rope, laughs and eats your brains.');
-        goodNight();
+    rope(0);
+    break;
   }
 
 
